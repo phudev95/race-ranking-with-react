@@ -38,6 +38,10 @@ h1.title {
   border-radius: 50%;
 }
 
+.user-list label {
+  width: 150px;
+}
+
 .user-information {
   height: 50px;
   display: flex;
@@ -45,7 +49,6 @@ h1.title {
 }
 
 .user-information meter {
-  margin-left: auto;
   width: 150px;
 }
 
