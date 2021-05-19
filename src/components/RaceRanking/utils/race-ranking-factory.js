@@ -1,10 +1,5 @@
-import { USER_JOINED } from "./constant";
-import { fakeUsers } from "./fake-users";
-
-export const SORT_TYPE = {
-  RANDOM: 'RANDOM',
-  FIXED: 'FIXED'
-}
+import { SCENARIO, USER_JOINED } from './constant';
+import { fakeUsers } from './fake-users';
 
 /**
  * raceRankingFactory()
@@ -14,20 +9,18 @@ export function raceRankingFactory() {
   const users = JSON.parse(JSON.stringify(fakeUsers)).slice(0, USER_JOINED);
   const totalUsers = users.length;
 
-  return function (type = SORT_TYPE.FIXED) {
-    if (type === SORT_TYPE.FIXED) {
+  return (scenario = SCENARIO.SCENARIO_1) => {
+    if (scenario === SCENARIO.SCENARIO_1) {
       const randomUserIndex = Math.floor(Math.random() * 2);
-      let temporaryValue = Object.assign({}, users[randomUserIndex]);
-      temporaryValue.progress = temporaryValue.progress  + Math.random() * 20;
+      const temporaryValue = { ...users[randomUserIndex] };
+      temporaryValue.progress += Math.random() * 20;
 
       users[randomUserIndex] = temporaryValue;
-    }
-
-    else {
+    } else {
       const randomUserIndex = Math.floor(Math.random() * totalUsers);
 
-      let temporaryValue = Object.assign({}, users[randomUserIndex]);
-      temporaryValue.progress = temporaryValue.progress + Math.random() * 20;
+      const temporaryValue = { ...users[randomUserIndex] };
+      temporaryValue.progress += Math.random() * 20;
       users[randomUserIndex] = temporaryValue;
     }
 

@@ -2,33 +2,30 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Bullets } from "./components/Bullets";
 import { UserList } from "./components/UserList";
-import { raceRankingFactory, SORT_TYPE } from "./utils/race-ranking-factory";
-
-const fetchUsers = raceRankingFactory();
+import { raceRankingFactory } from "./utils/race-ranking-factory";
+import { getSettings } from "./utils/settings";
 
 export const RaceRanking = () => {
   const [raceRankingUsers, setRaceRankingUsers] = useState([]);
-  const timeRef = useRef();
 
-  const isRandomMode = useMemo(() => location.search === "?random", []);
-  const time = useMemo(() => 1000 / (isRandomMode ? 60 : 10), [isRandomMode]);
+  const intervalRef = useRef();
+  const settings = useMemo(() => getSettings(), []);
+  const fetchUsers = useMemo(() => raceRankingFactory(), []);
 
   const refreshUsersList = useCallback(() => {
-    const users = fetchUsers(isRandomMode ? SORT_TYPE.RANDOM : SORT_TYPE.FIXED);
+    const users = fetchUsers(settings.scenario);
     setRaceRankingUsers(() => [...users]);
-  }, [isRandomMode]);
+  }, []);
 
   useEffect(() => {
-    // Initial render race ranking users
     refreshUsersList();
 
-    // Auto update new infomation of the list race ranking
-    timeRef.current = setInterval(() => refreshUsersList(), time);
+    intervalRef.current = setInterval(refreshUsersList, settings.time);
 
     return () => {
-      clearInterval(timeRef.current);
+      clearInterval(intervalRef.current);
     };
-  }, [refreshUsersList, time]);
+  }, [refreshUsersList]);
 
   return (
     <div className="race-ranking">
