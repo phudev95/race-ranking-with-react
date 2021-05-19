@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { LAP_LENGTH } from "../../utils/constant";
+import { memo } from 'react';
+import { LAP_LENGTH } from '../../utils/constant';
 
 const UserInformationWithoutMemo = ({ raceRankingUser }) => {
   return (
@@ -12,7 +12,7 @@ const UserInformationWithoutMemo = ({ raceRankingUser }) => {
         max={LAP_LENGTH}
       />
       <i className="km">
-        {raceRankingUser.progress.toFixed(2)} km (Round{" "}
+        {raceRankingUser.progress.toFixed(2)} km (Round{' '}
         {Math.floor(raceRankingUser.progress / LAP_LENGTH) + 1})
       </i>
     </div>
