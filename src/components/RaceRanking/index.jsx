@@ -9,7 +9,9 @@ export const RaceRanking = () => {
 
   const intervalRef = useRef();
   const settings = useMemo(() => getSettings(), []);
-  const fetchUsers = useMemo(() => raceRankingFactory(), []);
+  const fetchUsers = useMemo(() => raceRankingFactory(settings.total), [
+    settings.total,
+  ]);
 
   const refreshUsersList = useCallback(() => {
     const users = fetchUsers(settings.scenario);
