@@ -1,9 +1,8 @@
-/* eslint-disable no-restricted-globals */
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Bullets } from "./components/Bullets";
-import { UserList } from "./components/UserList";
-import { raceRankingFactory } from "./utils/race-ranking-factory";
-import { getSettings } from "./utils/settings";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Bullets } from './components/Bullets';
+import { UserList } from './components/UserList';
+import { raceRankingFactory } from './utils/race-ranking-factory';
+import { getSettings } from './utils/settings';
 
 export const RaceRanking = () => {
   const [raceRankingUsers, setRaceRankingUsers] = useState([]);
@@ -15,7 +14,7 @@ export const RaceRanking = () => {
   const refreshUsersList = useCallback(() => {
     const users = fetchUsers(settings.scenario);
     setRaceRankingUsers(() => [...users]);
-  }, []);
+  }, [fetchUsers, settings.scenario]);
 
   useEffect(() => {
     refreshUsersList();
@@ -25,7 +24,7 @@ export const RaceRanking = () => {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [refreshUsersList]);
+  }, [refreshUsersList, settings.time]);
 
   return (
     <div className="race-ranking">
