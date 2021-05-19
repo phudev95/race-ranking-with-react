@@ -1,12 +1,13 @@
-import { SCENARIO } from './constant';
+import { SCENARIO, USER_JOINED } from './constant';
 import { fakeUsers } from './fake-users';
 
 /**
  * raceRankingFactory()
  * @returns array of user
  */
-export function raceRankingFactory(totalUsers) {
-  const users = JSON.parse(JSON.stringify(fakeUsers)).slice(0, totalUsers);
+export function raceRankingFactory() {
+  const users = JSON.parse(JSON.stringify(fakeUsers)).slice(0, USER_JOINED);
+  const totalUsers = users.length;
 
   return (scenario = SCENARIO.SCENARIO_1) => {
     if (scenario === SCENARIO.SCENARIO_1) {
