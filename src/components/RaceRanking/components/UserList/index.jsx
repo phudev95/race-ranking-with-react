@@ -18,7 +18,7 @@ UserList.propTypes = {
   raceRankingUsers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
+      base64: PropTypes.string.isRequired,
       fullName: PropTypes.string.isRequired,
       progress: PropTypes.number.isRequired,
     })

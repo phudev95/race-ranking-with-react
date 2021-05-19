@@ -5,7 +5,7 @@ import { LAP_LENGTH } from '../../utils/constant';
 const UserInformationWithoutMemo = ({ raceRankingUser }) => {
   return (
     <div className="user-information" key={raceRankingUser.id}>
-      <img alt="" src={raceRankingUser.image} />
+      <img alt="" src={raceRankingUser.base64} />
       <label htmlFor="race-progress-meter">{raceRankingUser.fullName}</label>
       <meter
         id="race-progress-meter"
@@ -24,7 +24,7 @@ const UserInformationWithoutMemo = ({ raceRankingUser }) => {
 UserInformationWithoutMemo.propTypes = {
   raceRankingUser: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
+    base64: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
   }).isRequired,
