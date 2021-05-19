@@ -1,4 +1,4 @@
-import { RaceRanking } from './components/RaceRanking';
+import { RaceRanking } from "./components/RaceRanking";
 
 function App() {
   return (

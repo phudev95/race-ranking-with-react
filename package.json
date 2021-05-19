@@ -1,12 +1,10 @@
 {
   "name": "race-ranking-with-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "A demo to demonstrate React performance [FPS, Monitor]",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "proptypes": "^1.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "4.0.0",
@@ -26,22 +24,14 @@
     "prettier": "2.2.1"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "extends": ["react-app"]
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint .",
     "lint:fix": "eslint ./ --fix"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
 }
